@@ -56,33 +56,23 @@ def str_list_frm_path(request):
     return path_segments
 
 
-# def check_consent(request, consent_urls):
-#     if request.path == '/':
-#         if 'concent_given' in request.session:
-#             consent_given = True   
-#         else:
-#             consent_given = False   
-#     elif request.path in consent_urls:
-#         consent_given = True        
-#     elif 'concent_given' in request.session:      
-#         consent_given = True 
-#     else:        
-#         consent_given = False
-        
-#     return consent_given
-
 def check_consent(request, consent_urls):
-    if request.path == '/':
-        consent_given = request.session.get('consent_given', False)
+    if request.session.get('concent_given') == True:        
+        consent_given = True        
     elif request.path in consent_urls:
-        consent_given = True
+        consent_given = True 
+    else:        
+        consent_given = False
+        
+    if consent_given:
+        request.session['concent_given'] = True
     else:
-        consent_given = request.session.get('consent_given', False)
-
-    # if not consent_given:
-    #     request.session['consent_given'] = True
-
+        request.session['concent_given'] = False
+        
+        
     return consent_given
+
+
     
 
 
