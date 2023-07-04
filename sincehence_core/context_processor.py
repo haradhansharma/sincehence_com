@@ -57,6 +57,7 @@ def str_list_frm_path(request):
 
 
 def check_consent(request, consent_urls):
+  
     if 'concent_given' not in request.session:
         request.session['concent_given'] = 'False'
          
