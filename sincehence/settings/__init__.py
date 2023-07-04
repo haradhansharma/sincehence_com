@@ -12,12 +12,12 @@ load_dotenv(os.path.join(BASE_DIR, '.env.sincehence'))
 
 DEBUG = ast.literal_eval(os.getenv('DEBUG'))
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = str(os.getenv("SECRET_KEY"))
 if not SECRET_KEY:
     raise ValueError("No DJANGO_SECRET_KEY set for production!")
 
 if DEBUG:
-    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", ["*"])
+    ALLOWED_HOSTS = str(os.getenv("ALLOWED_HOSTS", ["*"]))
     CSRF_TRUSTED_ORIGINS = os.getenv(
         "CSRF_TRUSTED_ORIGINS", "https://127.0.0.1 https://localhost"
     ).split(" ")
