@@ -57,13 +57,16 @@ def str_list_frm_path(request):
 
 
 def check_consent(request, consent_urls):
-    
-    if request.session.get('concent_given') == True:        
+    if 'concent_given' not in request.session:
+        request.session['concent_given'] = 'False'
+         
+    if request.session.get('concent_given') == 'True':        
         consent_given = True        
     elif request.path in consent_urls:
         consent_given = True                     
     else:        
         consent_given = False
+      
      
         
         
