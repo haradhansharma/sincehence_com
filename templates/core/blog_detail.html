@@ -1,0 +1,85 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+
+{% endblock %}   
+
+
+
+{% block about %} 
+
+    <main class="page-wrapper">
+        <!-- Start Advance Pricing Area  -->
+        <div class="rainbow-blog-details-area">
+            <div class="post-page-banner rainbow-section-gapTop">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="content text-center">
+                                <div class="page-title">
+                                    <h1 class="theme-gradient">{{blog.title}}</h1>
+                                </div>
+                                <ul class="rainbow-meta-list">
+                                    <li>
+                                        <i class="feather-user"></i>
+                                        <a href="{% url 'sincehence_core:user_blogs' blog.creator.username %}">{{blog.creator.username}}</a>
+                                    </li>
+                                    <li>
+                                        <i class="feather-calendar"></i>
+                                        {{blog.updated_at|date:"F j, Y" }}
+                                    </li>
+                                    
+                                </ul>
+                                <div class="thumbnail alignwide mt--60"><img class="w-100 radius" src="{{blog.feature.url}}" alt="{{blog.title}}" title="{{blog.title}}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-details-content pt--60 rainbow-section-gapBottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="content">
+
+                               {{blog.body|safe}}
+
+                               <div class="category-meta">
+                               <ul class="rainbow-meta-list">                                
+                                    <li class="btn">
+                                        <a href="#">
+                                        <i class="feather-eye"></i>
+                                        {{blog.total_view }}
+                                        </a>
+                                    </li>                                   
+                                </ul>
+                                </div>
+
+
+                                <div class="category-meta">
+                                    <span class="text">Categories: </span>
+                                    <div class="tagcloud">
+                                        {% for cat in blog.categories.all %}
+                                        <a href="{{ cat.get_absolute_url }}">{{cat.title}}</a>
+                                        {% endfor %}
+                                        
+                                    </div>
+                                </div>
+
+
+
+
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Advance Pricing Area  -->
+
+
+
+{% endblock %}

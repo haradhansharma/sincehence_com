@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% block robotindex %} <meta name="robots" content="noindex">  {% endblock %}
+{% block adsencecode %} {% endblock %}
+
+{% load static %}
+
+{% block title %}OOPS! 404{% endblock %} 
+
+{% block about %}
+
+<div class="error-area ptb--200 ptb_sm--60 ptb_md--80">
+    <div class="container">
+        <div class="row align-item-center">
+            <div class="col-lg-12">
+                <div class="error-inner">
+                    <h1>OPPS! There is 404!</h1>
+                    <h2 class="title">Not Found.</h2>
+                    <p class="description"> We didnt Found What You Are Looking For! </p>
+              
+                    <div class="view-more-button"><a class="btn-default" href="/">Go Back Home</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block footer %}
+    {% include 'layouts/footer.html' %}
+{% endblock %}
+
+
+

@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+{% endblock %}   
+
+
+
+{% block about %} 
+
+        <!-- Start Slider Area  -->
+        <div class="slider-area slider-style-1 variation-default height-850 bg_image bg_image--12" style="background-image: url({{page.top_banenr.url}});" data-black-overlay="7">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="inner pt--80 text-center" data-sal="slide-up" data-sal-duration="400" data-sal-delay="150">
+                            <div>
+                                <h3 class="rainbow-sub-badge"><span class="theme-gradient">{{page.title}}.</span></h3>
+                            </div>
+                            <h1 class="title display-one">{{page.top_tagline|safe}}.</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Slider Area  -->
+
+        <!-- Start Service Area  -->
+        <div class="service-area rainbow-section-gapTop">
+            <div class="container">
+                <div class="row">
+                   
+                    <div class="col-lg-12">
+                        {{page.body|safe}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Service Area  -->
+
+
+
+{% endblock %}

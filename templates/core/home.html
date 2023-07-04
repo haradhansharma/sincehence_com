@@ -1,0 +1,221 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+        <!-- Start Slider Area  -->
+        {% block slider %}  
+        <div class="slider-area slider-style-6 shape-left inheader-not-transparent height-750">
+            <div class="container">
+                <div class="row row--30 align-items-center">
+                    <div class="order-2 order-lg-1 col-lg-6 mt_md--50 mt_sm--50 mt_lg--30">
+                        <div class="inner text-left">
+                            <h1 class="title color-white mb-3 h3">Welcome to.</h1>
+                            <img class="radius-small mb-3" src="{{site_data.logo}}" alt="{{site_data.name}}" title="{{site_data.name}}">
+                            <p class="description color-white">We stand out from the competition with our dedication to customer satisfaction, innovation, and ethical business practices.</p>
+                            <div class="button-group mt--30 mt_sm--20">
+                                <a class="btn-default btn-medium btn-icon btn-border" href="{% url 'sincehence_core:contact' %}">Contact Us<i class="icon feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 d-none d-lg-block">
+                        <div class="video-btn">
+                            <div class="video-popup icon-center">
+                                <div class="overlay-content">
+                                    <div class="thumbnail"><img class="radius-small" src="{% static 'ytb.png' %}" alt="Home Youtube Image" title="Home Youtube Image"></div>
+                                    <div class="video-icon">
+                                        <a class="btn-default rounded-player popup-video" href="https://www.youtube.com/watch?v=ySavzvuvTIE">
+                                            <span><i class="feather-play"></i></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-lightbox-wrapper"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shape-image"><img src="{% static 'assets/images/banner/white-shape.svg' %}" alt="Home Banner Images" title="Home Banner Images" style="height:100%;"></div>
+        </div>
+
+        
+     
+        {% endblock %}
+        <!-- End Slider Area  -->
+
+    
+
+        <!-- Start About Area  -->
+        {% block about %}  
+
+        <div class="rainbow-about-area rainbow-section-gap">
+            <div class="container">
+                <div class="row row--30 align-items-center">
+                    <div class="col-lg-5">
+                        <div class="thumbnail" data-sal="slide-right" data-sal-duration="800">
+                            <img class="w-100" src="{% static 'about_us.png' %}" alt="About Us" title="About Us">
+                        </div>
+                    </div>
+                    <div class="col-lg-7 mt_md--40 mt_sm--40">
+                        <div class="content" data-sal="slide-left" data-sal-duration="800">
+                            <div class="section-title">
+                                <h2 class="title">SinceHence LTD <br>
+                                    <span class="header-caption">
+                                        <span class="cd-headline clip is-full-width">
+                                            <span class="cd-words-wrapper">
+                                                <b class="is-visible theme-gradient">Innovative.</b>
+                                                <b class="is-hidden theme-gradient">Quality-driven.</b>
+                                                <b class="is-hidden theme-gradient">Empowering.</b>
+                                            </span>
+                                    </span>
+                                    </span>
+                                </h2>
+                                <p>At SINCEHENCE LTD, we are driven by a passion for excellence and a commitment to delivering exceptional products and services. With a focus on innovation, quality, and customer satisfaction, we strive to exceed expectations in every endeavor.</p>
+                                <p>As a dynamic and forward-thinking company, we embrace the ever-evolving landscape of technology and industry trends. Our diverse range of offerings spans various trademark classes, catering to the needs and preferences of individuals and businesses alike.</p>
+                                <p>With our extensive experience and expertise, we provide non-specialized wholesale trade, retail sale via mail order houses or the internet, information technology consultancy activities, and data processing, hosting, and related services. Our versatility allows us to adapt and tailor our solutions to meet the unique requirements of our clients.</p>
+                                <p>We take pride in our brand, SINCEHENCE, which represents our unwavering dedication to delivering products that enhance the lives of our customers. From cutting-edge technology and electronics to stylish accessories, home and kitchen essentials, and sports and leisure offerings, SINCEHENCE is a symbol of quality and innovation.</p>
+                                <div class="read-more-btn mt--40">
+                                    <a class="btn-default" href="{{about_us_link}}">
+                                        <span>More About Us</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+        {% endblock %}
+        <!-- End About Area  -->
+
+        <!-- Start Service Area  -->
+        {% block service_area %}  
+
+        <div class="rainbow-service-area rainbow-section-gap ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center" data-sal="slide-up" data-sal-duration="700" data-sal-delay="100">
+                            <h4 class="subtitle ">
+                                <span class="theme-gradient">Catering to Your Needs: What We Can Do for You</span>
+                            </h4>
+                            <h2 class="title w-600 mb--20">Unparalleled Services Tailored to Your Needs.</h2>
+                            <p class="description b1">At SINCEHENCE LTD, we are dedicated to providing exceptional services tailored to your needs. From retailing high-quality products on the Amazon marketplace to offering expert IT consultancy, data processing, and wholesale trade solutions, we have you covered.
+                                <br>Experience convenience, expertise, and support with SINCEHENCE LTD. Explore our services today and let us help you achieve your goals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row--15 service-wrapper">
+                    {% for service in services %}
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 d-flex" data-sal="slide-up" data-sal-duration="700">
+                            <div class="service gallery-style text-left flex-fill">
+                                <div class="inner">
+                                    <div class="content">
+                                        <h4 class="title">
+                                            {{ service.title }}
+                                        </h4>
+                                        <p class="description">{{ service.body }}</p>
+                                    </div>
+                                    <div class="image">
+                                        <img src="{{ service.image.url }}" alt="{{ service.title }}" title="{{ service.title }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+    
+                    
+                </div>
+            </div>
+        </div>
+
+        {% endblock %}
+        <!-- End Service Area  -->               
+        
+
+        <!-- Start Testimonial Area  -->
+        {% block mission %}   
+
+        <!-- Start Company Mission Area  -->
+    <div class="rainbow-company-mission-are rainbow-section-gap">
+        <div class="container">
+            <div class="row row--30">
+                <div class="col-lg-7">
+                    <div class="mission-title" data-sal="slide-right" data-sal-duration="800">
+                        <h2 class="title">Our Mission <br>
+                            <span class="header-caption">
+                                <span class="cd-headline clip is-full-width">
+                                    <span class="cd-words-wrapper">
+                                        <b class="is-visible theme-gradient">Enrich.</b>
+                                        <b class="is-hidden theme-gradient">Foster.</b>
+                                        <b class="is-hidden theme-gradient">Engage.</b>
+                                    </span>
+                            </span>
+                            </span>
+                        </h2>
+                        <p>We are passionate about leveraging technology to drive positive change in the digital landscape. Our commitment to staying at the forefront of the industry enables us to provide cutting-edge solutions, including data processing, hosting, and e-commerce services. By harnessing the power of technology, we empower businesses to unlock their full potential and optimize their operations.</p>
+                        <p>Our mission extends beyond commerce as we actively support the growth and development of our local and global communities. Through responsible business practices, we strive to contribute to a sustainable future, fostering economic growth, and empowering individuals. At Sincehence Ltd, we are dedicated to making a meaningful impact through our products, services, and the values we uphold.</p>
+                        <div class="read-more-btn mt--50"><a class="btn-default btn-icon" href="{{about_us_link}}">Learn More <i
+                                    class="icon feather-arrow-right"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="thumbnail" data-sal="slide-left" data-sal-duration="800">
+                        <img class="w-100" src="{% static 'mis.png' %}" alt="Our Mission" title="Our Mission">
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    <!-- End Company Mission Area  -->
+ 
+        {% endblock %}
+        <!-- End Testimonial Area  -->
+
+        
+
+        <!-- Start Blog Area  -->
+        {% block blog %}    
+        <!-- Start Blog Area  -->
+        <div class="blog-area rainbow-section-gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center" data-sal="slide-up" data-sal-duration="700" data-sal-delay="100">
+                            <h4 class="subtitle "><span class="theme-gradient">Latests News</span></h4>
+                            <h2 class="title w-600 mb--20">Our Latest News.</h2>
+                            <p class="description b1">
+                                Stay informed and up-to-date with our latest news section. Here, we bring you the most recent updates, announcements, and insights about SINCEHENCE LTD. 
+                                Discover exciting product launches, industry trends, expert opinions, and success stories from our valued customers. 
+                                Whether it's new partnerships, upcoming events, or innovative solutions, this section is your go-to resource for staying connected with our dynamic company. 
+                                Check back regularly to stay in the loop and be the first to know about our latest developments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row--15">
+                    {% for ln in latest_news %}
+                    <div class="col-lg-4 col-md-6 col-12 mt--30 d-flex" data-sal="slide-up" data-sal-duration="700">
+                        <div class="rainbow-card box-card-style-default flex-fill">
+                            <div class="inner">
+                                <div class="thumbnail"><a class="image" href="{{ln.get_absolute_url}}"><img src="{{ln.feature.url}}" alt="{{ln.title}}" title="{{ln.title}}"></a></div>
+                                <div class="content">
+                                    <ul class="rainbow-meta-list">
+                                        <li><a href="{% url 'sincehence_core:user_blogs' ln.creator.username %}">{{ln.creator.username}}</a></li>
+                                        <li class="separator">/</li>
+                                        <li>{{ln.updated_at|date:"F j, Y" }}</li>
+                                    </ul>
+                                    <h4 class="title"><a href="{{ln.get_absolute_url}}">{{ln.title}}.</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- End Blog Area  -->    
+
+        {% endblock %}
+        <!-- End Blog Area  -->
+        
+

@@ -1,0 +1,81 @@
+{% load static %}
+
+<header class="rainbow-header header-default header-left-align header-not-transparent header-sticky">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-9 col-md-6 col-4 position-static">
+                <div class="header-left d-flex">
+                    <div class="logo">
+                        <a href="/">
+                            <img class="logo-light" src="{{ site_data.trademark }}" alt="{{ site_data.name }}" title="{{ site_data.name }}">
+                            <img class="logo-dark" src="{{ site_data.trademark }}" alt="{{ site_data.name }}" title="{{ site_data.name }}">
+                        </a>
+                    </div>
+                    <nav class="mainmenu-nav d-none d-lg-block">
+                        <ul class="mainmenu">                                                        
+                            {% for hm in header_menu %}                                
+                                {% if hm.url and not hm.data_set %}
+                                    <li><a class="{% if hm.url == request.path %} active {% endif %}" href="{{hm.url}}">{{hm.title}}</a></li>  
+                                {% endif %}                           
+
+                                {% if hm.data_set and not hm.url %} 
+                                <li class="has-droupdown has-menu-child-item"><a href="#">{{hm.title}}</a>
+                                    <ul class="submenu">
+                                        {% for ds in hm.data_set %}                                    
+                                            <li><a href="{{ds.url}}">{{ds.title}}</a></li> 
+                                        {% endfor %}                                    
+                                    </ul>
+                                </li>
+                                {% endif %}
+                            {% endfor %}  
+
+                        </ul>
+
+
+
+
+
+
+
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="header-right">                  
+
+                    <!-- Start Mobile-Menu-Bar -->
+                    <div class="mobile-menu-bar ml--5 d-block d-lg-none">
+                        <div class="hamberger">
+                            <button class="hamberger-button">
+                                <i class="feather-menu"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Start Mobile-Menu-Bar -->
+
+                    <!-- Start Switcher Area  -->
+                    <div id="my_switcher" class="my_switcher">
+                        <ul>
+                            <li>
+                                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                                    <img class="sun-image" src="{% static 'assets/images/icons/sun-01.svg' %}" alt="Switch to dark" title="Switch to dark">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                                    <img class="Victor Image" src="{% static 'assets/images/icons/vector.svg' %}" alt="Switch to Light" title="Switch to dark">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Start Switcher Area  -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+  

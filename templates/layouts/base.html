@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+{% load static %}
+{% load tz %}
+{% now "Y" as current_year %}
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block robotindex %}{% endblock %}
+    {% include 'includes/meta.html' %}
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{site_data.favicon}}">    
+    
+    <!-- CSS ============================================ -->
+    
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"> 
+
+    {% block extra_head %}
+    {% endblock %}    
+  </head>
+
+  <body>    
+    <main class="page-wrapper">
+
+      <!-- Start Header Top Area  -->
+
+      {% block toparea %}  
+
+      <div class="header-top-news bg-image1">
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="inner">
+                            <div class="content">
+                                <span class="rainbow-badge"><a class="link-light" target="_blank" rel="no-follow" href="https://amzn.to/3CSpUPi">Best Seller</a></span>
+                                <span class="news-text">Amazon Associate: Earn from qualifying purchases. No extra charges!.</span>
+                            </div>
+                            <div class="right-button">
+                                <a class="btn-read-more" target="_blank" rel="no-follow" href="https://amzn.to/3CSpUPi">
+                                    <span>Purchase Now <i class="feather-arrow-right"></i></span>                                    
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="icon-close">
+            <button class="close-button bgsection-activation">
+                <i class="feather-x"></i>
+            </button>
+        </div>
+    </div>
+  
+      {% endblock %}
+
+      <!-- End Header Top Area  -->
+
+
+      {% block header %}          
+      {% include 'layouts/header.html' %}
+    {% endblock %}
+
+
+
+    
+
+    <!-- Start Theme Style  -->
+    <div>
+        <div class="rainbow-gradient-circle"></div>
+        <div class="rainbow-gradient-circle theme-pink"></div>
+    </div>
+    <!-- End Theme Style  -->
+
+
+    <div class="popup-mobile-menu">
+        <div class="inner">
+            <div class="header-top">
+                <div class="logo">
+                    <a href="/">
+                        <img class="logo-light" src="{{ site_data.trademark }}" alt="{{ site_data.name }}" title="{{ site_data.name }}">
+                        <img class="logo-dark" src="{{ site_data.trademark }}" alt="{{ site_data.name }}" title="{{ site_data.name }}">
+                    </a>
+                </div>
+                <div class="close-menu">
+                    <button class="close-button">
+                        <i class="feather-x"></i>
+                    </button>
+                </div>
+            </div>
+            <ul class="mainmenu">
+                {% for hm in header_menu %}   
+                    {% if hm.url and not hm.data_set %}
+                        <li><a class="{% if hm.url == request.path %} active {% endif %}" href="{{hm.url}}">{{hm.title}}</a></li>
+                    {% endif %}
+                    {% if hm.data_set and not hm.url %} 
+                        <li class="has-droupdown has-menu-child-item"><a href="#">{{hm.title}}</a>
+                            <ul class="submenu">                            
+                                {% for ds in hm.data_set %}  
+                                    <li><a href="{{ds.url}}">{{ds.title}}</a></li>    
+                                {% endfor %}                                              
+                            </ul>
+                        </li>
+                    {% endif %}   
+                {% endfor %}  
+            </ul>
+        </div>
+    </div>
+
+
+
+      <!-- Start Slider Area  -->
+      {% block slider %}  
+    
+      {% endblock %}
+      <!-- End Slider Area  -->
+
+
+
+      <!-- Start Seperator Area  -->
+      <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+    <!-- End Seperator Area  -->
+
+    <!-- Start About Area  -->
+    {% block about %}  
+    
+    {% endblock %}
+    <!-- End About Area  -->
+
+
+
+
+    <!-- Start Seperator Area  -->
+    <div class="rbt-separator-mid">
+      <div class="container">
+          <hr class="rbt-separator m-0">
+      </div>
+    </div>
+    <!-- End Seperator Area  -->
+
+    <!-- Start Service Area  -->
+    {% block service_area %}  
+  
+    {% endblock %}
+    <!-- End Service Area  -->
+
+
+
+      <!-- Start Seperator Area  -->
+      <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+    <!-- End Seperator Area  -->
+
+    <!-- Start Testimonial Area  -->
+    {% block mission %}    
+    
+    {% endblock %}
+    <!-- End Testimonial Area  -->
+
+
+
+
+      <!-- Start Seperator Area  -->
+      <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+      </div>
+    <!-- End Seperator Area  -->
+
+
+      {% block blog %}
+
+        
+
+        {% endblock %}
+
+
+      <footer class="rainbow-footer footer-style-default variation-two">
+        {% block footer %}
+        {% include 'layouts/footer.html' %}
+        {% endblock %}
+      </footer>
+
+      <!-- Start Copy Right Area  -->
+      <div class="copyright-area copyright-style-one">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-8 col-sm-12 col-12">
+                    <div class="copyright-left">
+                        <p>&copy; {{ current_year }} {{site_data.name}}. All rights reserved. | Website developed by <a target="_blank" href="https://www.hrdnsh.com">Haradhan Sharma</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-12 col-12">
+                    <div class="copyright-right text-center text-lg-end">
+                        <p class="copyright-text">&copy; SinceHence {{ current_year }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Copy Right Area  -->
+
+    </main> 
+
+        <!-- All Scripts  -->
+    <!-- Start Top To Bottom Area  -->
+    <div class="rainbow-back-top">
+        <i class="feather-arrow-up"></i>
+    </div>
+    <!-- End Top To Bottom Area  -->
+    <!-- JS
+============================================ -->
+
+<div class="modal fade" id="concentDialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="concentDialogLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg custom-bottom-modal">
+      <div class="modal-content">
+        <div class="modal-header bg-primary-gradient">
+          <h5 class="modal-title title" id="concentDialogLabel">Consent Required</h5>
+        </div>
+        <div class="modal-body">
+            <p>
+                In order to browse this website, you must accept our
+                {% for cp in consent_pages %}
+                {% if forloop.last %}and {% endif %}
+                <span><a target="_blank" class="link-danger" href="{{cp.get_absolute_url}}">{{cp.title}}</a></span>
+                {% if forloop.last %}. {% else %}, {% endif %}
+                {% endfor %}
+                              
+              </p>
+              <p>
+                By clicking "Accept", you confirm that you have read and agreed to our policies. 
+                If you disagree with our policies after accepting, you can clear your browser's cookies or stop browsing for 1 hr to revoke your consent.
+              </p>
+        </div>
+        <div class="modal-footer bg-primary-gradient">
+          <button type="button" class="btn btn-secondary accept-btn" data-bs-dismiss="modal">Accept</button>
+          <button type="button" class="btn btn-primary">Decline</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ 
+    {% url 'policy_concent:set_concent' as concent_url %} 
+    <script>    
+        window.addEventListener('load', function() {
+            var concent_given = '{{consent_given}}';
+            // Get the modal element by its ID
+            var modal = document.getElementById('concentDialog');
+            
+            // Create a new bootstrap modal instance
+            var bootstrapModal = new bootstrap.Modal(modal);     
+
+            if (concent_given === 'False' || concent_given === false) {                   
+            
+                // Show the modal
+                bootstrapModal.show();
+            
+                // Get the "Close" button element
+                var acceptButton = document.querySelector('#concentDialog .modal-footer .accept-btn');    
+
+                // Add a click event listener to the "Close" button
+                acceptButton.addEventListener('click', function() {    
+                    // Construct the silent URL with the parameter
+                    var silentUrl = "{{concent_url}}";        
+                    // Call the silent URL
+                    var silentRequest = new XMLHttpRequest();
+                    silentRequest.open('GET', silentUrl, true);
+                    silentRequest.send();                    
+                }); 
+            } else {
+                bootstrapModal.hide();
+            }
+        });
+    </script>
+
+
+    {% include 'includes/scripts.html' %}
+    {% block extra_body %}    
+    {% endblock %}
+
+
+        
+     
+
+  </body>
+</html>
