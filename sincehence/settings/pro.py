@@ -18,7 +18,7 @@ from .settings_summernote import *
 CACHES = {    
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.getenv('CACHE_LOCATION'),
+        'LOCATION': os.path.join(BASE_DIR, 'cache'),
         'TIMEOUT': 3600,
         'OPTIONS': {
             'MAX_ENTRIES': 1000
